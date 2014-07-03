@@ -26,9 +26,23 @@ class HtmlFile
 
 	def handle_file
 		line_number=0
+		update_file=false
 		
 		file=File.open(@file_name,'r+')
+		temp=File.open('temp.txt','w')
 		file.each do |line|
+			if line.include?('<!-- Table Of Contents')
+				update_file=true
+			elsif line.include?('-->')&&update_file
+				update_file=false
+			elsif !update_file
+				temp.puts line
+			end
+			
+		end
+		temp.close
+		temp=File.open('temp.txt','r+')
+		temp.each do |line|
 			line_number+=1
 			if line.include?('<!--'&&'-->')
 				comment_line=line.delete('<!--'&&'-->')
@@ -41,7 +55,7 @@ class HtmlFile
 		file.rewind
 		file.puts '<!-- Table Of Contents'
 		@comment_lines.each do |k,v|
-			file.puts "Line - #{k} #{v}"
+			file.puts "Line - #{k+@comment_lines.size+2} #{v}"
 		end
 		file.puts '-->'
 		@lines.each do |val|

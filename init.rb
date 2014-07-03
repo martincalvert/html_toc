@@ -1,6 +1,6 @@
 #html_toc
 #This gem will take a directory or file as a argument then put a table of contents in each HTML file based on that files html comments
-#Martin Calvert 
+#Martin Calvert (sdla)
 #martin@martin-calvert.com
 #Martin-Calvert.com
 

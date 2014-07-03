@@ -1,5 +1,5 @@
 #Directory Class holds the directory and creates the necessary file objects to work through the directory
-#Martin Calvert
+#Martin Calvert (sdla)
 #martin@martin-calvert.com
 #Martin-Calvert.com
 
